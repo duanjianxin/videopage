@@ -11,6 +11,10 @@
         srcset=""
         @load="imageLoaded"
       >
+      <audio
+        v-show="false"
+        :src="imageUrl[0].audio"
+      ></audio>
     </div>
   </transition>
 </template>
@@ -20,7 +24,7 @@ export default {
   data() {
     return {
       isShow: true, // 是否显示进度条
-      imageUrl:data,
+      imageUrl: data,
       val: 0 // 进度
     };
   },

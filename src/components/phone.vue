@@ -23,28 +23,28 @@
         v-bind:key="index "
         v-bind:style="{backgroundImage:'url(' + item.gifUrl + ')'}"
       >
-        <img
+        <img v-if="item.animate[0].imgtext"
           class="gifImgText1"
           :src="item.animate[0].imgtext"
           alt=""
           srcset=""
           v-animate="{value: item.animate[0].value, delay: item.animate[0].delay}"
         >
-        <img
+        <img  v-if="item.animate[1].imgtext"
           class="gifImgText2"
           :src="item.animate[1].imgtext"
           alt=""
           srcset=""
           v-animate="{value: item.animate[1].value, delay: item.animate[1].delay}"
         >
-        <img
+        <img  v-if="item.animate[2].imgtext"
           class="gifImgText3"
           :src="item.animate[2].imgtext"
           alt=""
           srcset=""
           v-animate="{value: item.animate[2].value, delay: item.animate[2].delay}"
         >
-        <img
+        <img  v-if="item.animate[3].imgtext"
           class="gifImgText4"
           :src="item.animate[3].imgtext"
           alt=""
