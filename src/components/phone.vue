@@ -64,8 +64,9 @@ export default {
     beforeChange(prev, next) {
       // console.log("before", prev, next);
       // if (prev != 0) {
-      this.$refs.audios[prev].load();
-      // this.$refs.audios[prev].addTextTrack(this.$refs.audios[prev].src);
+      // this.$refs.audios[prev].load();
+
+      this.$refs.audios[prev].src = this.$refs.audios[prev].src;
       console.log(this.$refs.audios[prev].src);
 
       // }

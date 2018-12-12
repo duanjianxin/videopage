@@ -11,7 +11,7 @@
         srcset=""
         @load="imageLoaded"
       >
-       <!-- <img  v-for="(item,index) in imageUrl"
+      <!-- <img  v-for="(item,index) in imageUrl"
         v-bind:key="index+'_img'"
         v-show="false"
         :src="item.gifUrl"
@@ -127,7 +127,10 @@ export default {
   background-color: #999;
 }
 
-.loading{
+.loading {
+  width: 100px;
+  margin: 20px auto 0;
+  display: block;
   text-align: center;
   color: #999;
 }
