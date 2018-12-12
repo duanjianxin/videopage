@@ -11,10 +11,21 @@
         srcset=""
         @load="imageLoaded"
       >
-      <audio
+       <!-- <img  v-for="(item,index) in imageUrl"
+        v-bind:key="index+'_img'"
         v-show="false"
-        :src="imageUrl[0].audio"
+        :src="item.gifUrl"
+        alt=""
+        srcset=""
+        @load="imageLoaded"
+      > -->
+      <audio
+        v-for="(item,index) in imageUrl"
+        v-bind:key="index+'_audio'"
+        v-show="false"
+        :src="item.audio"
       ></audio>
+      <p class="loading">加载中...</p>
     </div>
   </transition>
 </template>
@@ -116,6 +127,10 @@ export default {
   background-color: #999;
 }
 
+.loading{
+  text-align: center;
+  color: #999;
+}
 .fade {
   &-enter-active,
   &-leave-active {

@@ -1,17 +1,7 @@
 <template>
 
   <div class="fullpage-container">
-    <!-- <div class="audioBox">
-      <audio
-        :src="bgaudio"
-        loop
-        ref="audioBg"
-      ></audio>
-      <img
-        :src="[bgaudioPlay ? '/static/images/bgplay.png' : '/static/images/bgstop.png']"
-        v-on:click="audioTab"
-      >
-    </div> -->
+    <bgaudio></bgaudio>
     <div
       class="fullpage-wp"
       v-fullpage="opts"
@@ -23,37 +13,20 @@
         v-bind:key="index "
         v-bind:style="{backgroundImage:'url(' + item.gifUrl + ')'}"
       >
-        <img v-if="item.animate[0].imgtext"
+        <img
+          v-for="(itemImg,indexImg) in item.animate"
+          v-bind:key="indexImg+'itemImg'"
+          v-if="itemImg.imgtext"
           class="gifImgText1"
-          :src="item.animate[0].imgtext"
+          :src="itemImg.imgtext"
           alt=""
           srcset=""
-          v-animate="{value: item.animate[0].value, delay: item.animate[0].delay}"
-        >
-        <img  v-if="item.animate[1].imgtext"
-          class="gifImgText2"
-          :src="item.animate[1].imgtext"
-          alt=""
-          srcset=""
-          v-animate="{value: item.animate[1].value, delay: item.animate[1].delay}"
-        >
-        <img  v-if="item.animate[2].imgtext"
-          class="gifImgText3"
-          :src="item.animate[2].imgtext"
-          alt=""
-          srcset=""
-          v-animate="{value: item.animate[2].value, delay: item.animate[2].delay}"
-        >
-        <img  v-if="item.animate[3].imgtext"
-          class="gifImgText4"
-          :src="item.animate[3].imgtext"
-          alt=""
-          srcset=""
-          v-animate="{value: item.animate[3].value, delay: item.animate[3].delay}"
+          v-animate="{value: itemImg.value, delay: itemImg.delay}"
         >
         <audio
           :src="item.audio"
           ref="audios"
+          preload="auto"
         ></audio>
       </div>
     </div>
@@ -62,13 +35,12 @@
 
 <script>
 import { data } from "../assets/js/data.js";
+import bgaudio from "../components/bgaudio.vue";
 export default {
   name: "demo",
   data() {
     return {
       isShowPage: true,
-      bgaudioPlay: true,
-      bgaudio: "/static/audio/bg.mp3",
       opts: {
         start: 0,
         dir: "v",
@@ -82,22 +54,18 @@ export default {
       mides: ""
     };
   },
+  components: {
+    bgaudio: bgaudio
+  },
   methods: {
     showMessage() {},
-    audioTab() {
-      this.bgaudioPlay = !this.bgaudioPlay;
-      var audioBg = this.$refs.audioBg;
-      if (this.bgaudioPlay) {
-        audioBg.play();
-      } else {
-        audioBg.pause();
-      }
-    },
+
     // 改变之前
     beforeChange(prev, next) {
       // console.log("before", prev, next);
       // if (prev != 0) {
       this.$refs.audios[prev].load();
+      // this.$refs.audios[prev].addTextTrack(this.$refs.audios[prev].src);
       console.log(this.$refs.audios[prev].src);
 
       // }
@@ -116,34 +84,18 @@ export default {
     setTimeout(() => {
       this.isShowPage = false;
     }, 2000);
+    // console.log($);
   }
 };
 </script>
 
 <style lang='less' scoped>
-.audioBox {
-  position: absolute;
-  right: 27px;
-  top: 27px;
-  background-color: transparent;
-  width: 27px;
-  height: 27px;
-  transform-style: preserve-3d;
-  transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
-  transform-origin: 50% 50% 0px;
-  z-index: 9;
-  img {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    display: block;
-  }
-}
 .page {
   display: block;
   text-align: center;
   font-size: 26px;
   color: #eee;
+  background-color: black;
   width: 100%;
   height: 100%;
   margin: 0;

@@ -1,7 +1,33 @@
-var data = [{
-        audio: 'http://360.moomory.com/lgvideodemo/static/audio/1开始.mp3',
-        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/1清晨开始.gif",
-        textGif: '',
+var data = [
+    // 片头
+    {
+        audio: '',
+        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/bg.gif",
+        animate: [{
+                imgtext: 'http://360.moomory.com/lgvideodemo/static/images/head/head1.png',
+                value: 'bounceInLeft',
+                delay: 0
+            },
+            {
+                imgtext: 'http://360.moomory.com/lgvideodemo/static/images/head/head2.png',
+                value: 'bounceInLeft',
+                delay: 0
+            },
+            {
+                imgtext: '',
+                value: 'bounceInLeft',
+                delay: 0
+            },
+            {
+                imgtext: '',
+                value: 'bounceInLeft',
+                delay: 0
+            },
+        ]
+    },
+    {
+        audio: 'http://360.moomory.com/lgvideodemo/static/audio/1.mp3',
+        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/1.gif",
         animate: [{
                 imgtext: '',
                 value: 'bounceInLeft',
@@ -25,35 +51,33 @@ var data = [{
         ]
     },
     {
-        audio: 'http://360.moomory.com/lgvideodemo/static/audio/2地铁.mp3',
-        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/2地铁.gif",
-        textGif: 'http://360.moomory.com/lgvideodemo/static/gif/2地铁文字.gif',
+        audio: 'http://360.moomory.com/lgvideodemo/static/audio/2.mp3',
+        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/2.gif",
         animate: [{
                 imgtext: 'http://360.moomory.com/lgvideodemo/static/images/2地铁/2地铁1_00144.png',
-                value: 'bounceInLeft',
-                delay: 0
+                value: 'bounceInUp',
+                delay: 100
             },
             {
                 imgtext: 'http://360.moomory.com/lgvideodemo/static/images/2地铁/2地铁2_00144.png',
-                value: 'bounceInRight',
-                delay: 300
+                value: 'bounceInUp',
+                delay: 100
             },
             {
                 imgtext: 'http://360.moomory.com/lgvideodemo/static/images/2地铁/2地铁3_00144.png',
-                value: 'bounceInLeft',
-                delay: 500
+                value: 'bounceInUp',
+                delay: 100
             },
             {
                 imgtext: 'http://360.moomory.com/lgvideodemo/static/images/2地铁/2地铁4_00144.png',
-                value: 'bounceInRight',
+                value: 'bounceInUp',
                 delay: 900
             },
         ]
     },
     {
-        audio: 'http://360.moomory.com/lgvideodemo/static/audio/3科技园.mp3',
-        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/3启迪科技园.gif",
-        textGif: "http://360.moomory.com/lgvideodemo/static/gif/3科技园文字.gif",
+        audio: 'http://360.moomory.com/lgvideodemo/static/audio/3.mp3',
+        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/3.gif",
         animate: [{
                 imgtext: 'http://360.moomory.com/lgvideodemo/static/images/3科技/3科技1_00135.png',
                 value: 'bounceInLeft',
@@ -77,9 +101,8 @@ var data = [{
         ]
     },
     {
-        audio: 'http://360.moomory.com/lgvideodemo/static/audio/4大学城底图.mp3',
-        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/4大学城.gif",
-        textGif: "http://360.moomory.com/lgvideodemo/static/gif/4大学城文字.gif",
+        audio: 'http://360.moomory.com/lgvideodemo/static/audio/4.mp3',
+        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/4.gif",
         animate: [{
                 imgtext: 'http://360.moomory.com/lgvideodemo/static/images/4大学城/4大学城1_00318.png',
                 value: 'bounceInLeft',
@@ -103,9 +126,8 @@ var data = [{
         ]
     },
     {
-        audio: 'http://360.moomory.com/lgvideodemo/static/audio/5基础教育.mp3',
-        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/5基础教育.gif",
-        textGif: "http://360.moomory.com/lgvideodemo/static/gif/5基础教育文字.gif",
+        audio: 'http://360.moomory.com/lgvideodemo/static/audio/5.mp3',
+        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/5.gif",
         animate: [{
                 imgtext: 'http://360.moomory.com/lgvideodemo/static/images/5基础教育/5基础教育1_00181.png',
                 value: 'bounceInLeft',
@@ -129,9 +151,8 @@ var data = [{
         ]
     },
     {
-        audio: 'http://360.moomory.com/lgvideodemo/static/audio/6大运中心.mp3',
-        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/6大运中心3.gif",
-        textGif: "http://360.moomory.com/lgvideodemo/static/gif/6大运中心文字.gif",
+        audio: 'http://360.moomory.com/lgvideodemo/static/audio/6.mp3',
+        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/6.gif",
         animate: [{
                 imgtext: 'http://360.moomory.com/lgvideodemo/static/images/6大运中心/6大运中心1_00322.png',
                 value: 'bounceInLeft',
@@ -155,9 +176,8 @@ var data = [{
         ]
     },
     {
-        audio: 'http://360.moomory.com/lgvideodemo/static/audio/7小镇.mp3',
-        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/7小镇.gif",
-        textGif: "http://360.moomory.com/lgvideodemo/static/gif/7小镇文字.gif",
+        audio: 'http://360.moomory.com/lgvideodemo/static/audio/7.mp3',
+        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/7.gif",
         animate: [{
                 imgtext: 'http://360.moomory.com/lgvideodemo/static/images/7小镇/7小镇1_00052.png',
                 value: 'bounceInLeft',
@@ -181,9 +201,8 @@ var data = [{
         ]
     },
     {
-        audio: 'http://360.moomory.com/lgvideodemo/static/audio/8红立方.mp3',
-        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/8红立方.gif",
-        textGif: "http://360.moomory.com/lgvideodemo/static/gif/8红立方文字.gif",
+        audio: 'http://360.moomory.com/lgvideodemo/static/audio/8.mp3',
+        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/8.gif",
         animate: [{
                 imgtext: 'http://360.moomory.com/lgvideodemo/static/images/8红立方/8红立方1_00122.png',
                 value: 'bounceInLeft',
@@ -207,9 +226,8 @@ var data = [{
         ]
     },
     {
-        audio: 'http://360.moomory.com/lgvideodemo/static/audio/9购物.mp3',
-        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/9购物.gif",
-        textGif: "http://360.moomory.com/lgvideodemo/static/gif/9购物文字.gif",
+        audio: 'http://360.moomory.com/lgvideodemo/static/audio/9.mp3',
+        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/9.gif",
         animate: [{
                 imgtext: 'http://360.moomory.com/lgvideodemo/static/images/9购物/9购物_00205.png',
                 value: 'bounceInLeft',
@@ -233,9 +251,8 @@ var data = [{
         ]
     },
     {
-        audio: 'http://360.moomory.com/lgvideodemo/static/audio/10美食.mp3',
-        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/10美食.gif",
-        textGif: "http://360.moomory.com/lgvideodemo/static/gif/10美食文字.gif",
+        audio: 'http://360.moomory.com/lgvideodemo/static/audio/10.mp3',
+        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/10.gif",
         animate: [{
                 imgtext: 'http://360.moomory.com/lgvideodemo/static/images/10美食/10美食1_00418.png',
                 value: 'bounceInLeft',
@@ -259,9 +276,8 @@ var data = [{
         ]
     },
     {
-        audio: 'http://360.moomory.com/lgvideodemo/static/audio/11大芬村.mp3',
-        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/11大芬村.gif",
-        textGif: "http://360.moomory.com/lgvideodemo/static/gif/11大芬村文字.gif",
+        audio: 'http://360.moomory.com/lgvideodemo/static/audio/11.mp3',
+        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/11.gif",
         animate: [{
                 imgtext: 'http://360.moomory.com/lgvideodemo/static/images/11大芬村/11大芬村1_00114.png',
                 value: 'bounceInLeft',
@@ -285,9 +301,8 @@ var data = [{
         ]
     },
     {
-        audio: 'http://360.moomory.com/lgvideodemo/static/audio/12东站.mp3',
-        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/12东站.gif",
-        textGif: "http://360.moomory.com/lgvideodemo/static/gif/12东站文字.gif",
+        audio: 'http://360.moomory.com/lgvideodemo/static/audio/12.mp3',
+        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/12.gif",
         animate: [{
                 imgtext: 'http://360.moomory.com/lgvideodemo/static/images/12东站/12东站1_00063.png',
                 value: 'bounceInLeft',
@@ -311,9 +326,8 @@ var data = [{
         ]
     },
     {
-        audio: 'http://360.moomory.com/lgvideodemo/static/audio/13医疗.mp3',
-        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/13医疗.gif",
-        textGif: "http://360.moomory.com/lgvideodemo/static/gif/13医疗文字.gif",
+        audio: 'http://360.moomory.com/lgvideodemo/static/audio/13.mp3',
+        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/13.gif",
         animate: [{
                 imgtext: 'http://360.moomory.com/lgvideodemo/static/images/13医疗/13医疗1_00202.png',
                 value: 'bounceInLeft',
@@ -337,9 +351,8 @@ var data = [{
         ]
     },
     {
-        audio: 'http://360.moomory.com/lgvideodemo/static/audio/14安全.mp3',
-        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/14安全.gif",
-        textGif: "http://360.moomory.com/lgvideodemo/static/gif/14安全文字.gif",
+        audio: 'http://360.moomory.com/lgvideodemo/static/audio/14.mp3',
+        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/14.gif",
         animate: [{
                 imgtext: 'http://360.moomory.com/lgvideodemo/static/images/14安全/14安全1_01742.png',
                 value: 'bounceInLeft',
@@ -363,9 +376,8 @@ var data = [{
         ]
     },
     {
-        audio: 'http://360.moomory.com/lgvideodemo/static/audio/15城市更新.mp3',
-        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/15城市更新.gif",
-        textGif: "http://360.moomory.com/lgvideodemo/static/gif/15城市发展文字.gif",
+        audio: 'http://360.moomory.com/lgvideodemo/static/audio/15.mp3',
+        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/15.gif",
         animate: [{
                 imgtext: 'http://360.moomory.com/lgvideodemo/static/images/15城市发展/15城市发展1_00079.png',
                 value: 'bounceInLeft',
@@ -389,9 +401,8 @@ var data = [{
         ]
     },
     {
-        audio: 'http://360.moomory.com/lgvideodemo/static/audio/16行政大厅.mp3',
-        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/16政务大厅.gif",
-        textGif: "http://360.moomory.com/lgvideodemo/static/gif/16行政服务文字.gif",
+        audio: 'http://360.moomory.com/lgvideodemo/static/audio/16.mp3',
+        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/16.gif",
         animate: [{
                 imgtext: 'http://360.moomory.com/lgvideodemo/static/images/16行政大厅/16行政大厅1_00153.png',
                 value: 'bounceInLeft',
@@ -415,9 +426,8 @@ var data = [{
         ]
     },
     {
-        audio: 'http://360.moomory.com/lgvideodemo/static/audio/17公交站.mp3',
-        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/17公交站.gif",
-        textGif: "http://360.moomory.com/lgvideodemo/static/gif/17公交站文字.gif",
+        audio: 'http://360.moomory.com/lgvideodemo/static/audio/17.mp3',
+        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/17.gif",
         animate: [{
                 imgtext: 'http://360.moomory.com/lgvideodemo/static/images/17公交站/17公交站1_00106.png',
                 value: 'bounceInLeft',
@@ -441,9 +451,8 @@ var data = [{
         ]
     },
     {
-        audio: 'http://360.moomory.com/lgvideodemo/static/audio/18保障房.mp3',
-        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/18保障房.gif",
-        textGif: "http://360.moomory.com/lgvideodemo/static/gif/18保障房文字.gif",
+        audio: 'http://360.moomory.com/lgvideodemo/static/audio/18.mp3',
+        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/18.gif",
         animate: [{
                 imgtext: 'http://360.moomory.com/lgvideodemo/static/images/18保障房/18保障房1_00222.png',
                 value: 'bounceInLeft',
@@ -463,6 +472,48 @@ var data = [{
                 imgtext: 'http://360.moomory.com/lgvideodemo/static/images/18保障房/18保障房4_00222.png',
                 value: 'bounceInRight',
                 delay: 900
+            },
+        ]
+    },
+    {
+        // 片尾
+        audio: '',
+        gifUrl: "http://360.moomory.com/lgvideodemo/static/gif/bg.gif",
+        bgColor: '',
+        animate: [{
+                imgtext: 'http://360.moomory.com/lgvideodemo/static/images/end/end1.png',
+                value: 'bounceInLeft',
+                delay: 0
+            },
+            {
+                imgtext: 'http://360.moomory.com/lgvideodemo/static/images/end/end2.png',
+                value: 'bounceInLeft',
+                delay: 0
+            },
+            {
+                imgtext: 'http://360.moomory.com/lgvideodemo/static/images/end/end3.png',
+                value: 'bounceInLeft',
+                delay: 0
+            }, {
+                imgtext: 'http://360.moomory.com/lgvideodemo/static/images/end/end4.png',
+                value: 'bounceInLeft',
+                delay: 0
+            }, {
+                imgtext: 'http://360.moomory.com/lgvideodemo/static/images/end/end5.png',
+                value: 'bounceInLeft',
+                delay: 0
+            }, {
+                imgtext: 'http://360.moomory.com/lgvideodemo/static/images/end/end6.png',
+                value: 'bounceInLeft',
+                delay: 0
+            }, {
+                imgtext: 'http://360.moomory.com/lgvideodemo/static/images/end/end7.png',
+                value: 'bounceInLeft',
+                delay: 0
+            }, {
+                imgtext: 'http://360.moomory.com/lgvideodemo/static/images/end/end8.png',
+                value: 'bounceInLeft',
+                delay: 0
             },
         ]
     },
