@@ -9,7 +9,7 @@
       autoplay="autoplay"
     ></audio>
     <img
-      :src="[bgaudioPlay ? 'http://360.moomory.com/lgvideodemo/static/images/bgplay.png' : 'http://360.moomory.com/lgvideodemo/static/images/bgstop.png']"
+      :src="[bgaudioPlay ? '/static/images/bgplay.png' : '/static/images/bgstop.png']"
       v-on:click="audioTab"
     >
   </div>
@@ -21,11 +21,12 @@ export default {
   data() {
     return {
       bgaudioPlay: true,
-      bgaudio: "http://360.moomory.com/lgvideodemo/static/audio/bg.mp3"
+      bgaudio: "/static/audio/bg.mp3"
     };
   },
 
-  created() {},
+  created() {
+  },
 
   components: {},
 

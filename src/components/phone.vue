@@ -68,15 +68,23 @@ export default {
 
       this.$refs.audios[prev].src = this.$refs.audios[prev].src;
       console.log(this.$refs.audios[prev].src);
-
+      // this.down(this.mides[next].gifUrl, next);
       // }
     },
     // 改变之后
     afterChange(prev, next) {
       // console.log("after", prev, next);
       // if (next != 0) {
+      var musicEle0 = this.$refs.audios[next];
+      musicEle0.play();
       this.$refs.audios[next].play();
       // }
+    },
+    down(selector, name) {
+      // 生成一个a元素
+      var a = document.createElement("a"); // 将a的download属性设置为我们想要下载的图片名称
+      a.download = name || "pic"; // 将生成的URL设置为a.href属性
+      a.href = "./boy.png"; // 触发a的单击事件
     }
   },
   created() {
@@ -98,7 +106,7 @@ export default {
   color: #eee;
   background-color: black;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   margin: 0;
   background-size: 100%;
   background-repeat: no-repeat;
@@ -120,6 +128,7 @@ export default {
     margin: auto;
     width: 100%;
     height: 100%;
+    max-height: 100vh;
   }
   .gifImgText3 {
     position: absolute;
@@ -129,6 +138,7 @@ export default {
     margin: auto;
     width: 100%;
     height: 100%;
+    max-height: 100vh;
   }
   .gifImgText4 {
     position: absolute;
@@ -137,6 +147,7 @@ export default {
     margin: auto;
     width: 100%;
     height: 100%;
+    max-height: 100vh;
   }
 }
 // .page-1 {
