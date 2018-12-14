@@ -6,10 +6,22 @@
     >
       <img
         v-show="false"
-        :src="imageUrl[0].gifUrl"
+        :src="imageUrl[1].gifUrl"
         alt=""
         srcset=""
         @load="imageLoaded"
+      >
+      <img
+        v-show="false"
+        :src="imageUrl[2].gifUrl"
+        alt=""
+        srcset=""
+      >
+      <img
+        v-show="false"
+        :src="imageUrl[15].gifUrl"
+        alt=""
+        srcset=""
       >
       <!-- <img  v-for="(item,index) in imageUrl"
         v-bind:key="index+'_img'"
@@ -25,7 +37,7 @@
         v-show="false"
         :src="item.audio"
       ></audio>
-      <p class="loading">加载中...</p>
+      <p class="loading">加载中...{{val}}%</p>
     </div>
   </transition>
 </template>
