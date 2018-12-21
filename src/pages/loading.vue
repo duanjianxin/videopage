@@ -1,132 +1,66 @@
 <template>
-  <transition name="fade">
-    <div
-      class="progress-bar"
-      v-if="isShow"
-    >
-      <img
-        v-show="false"
-        :src="imageUrl[1].gifUrl"
-        alt=""
-        srcset=""
-        @load="imageLoaded"
-      >
-      <img
-        v-show="false"
-        :src="imageUrl[2].gifUrl"
-        alt=""
-        srcset=""
-      >
-      <img
-        v-show="false"
-        :src="imageUrl[15].gifUrl"
-        alt=""
-        srcset=""
-      >
-      <!-- <img  v-for="(item,index) in imageUrl"
-        v-bind:key="index+'_img'"
-        v-show="false"
-        :src="item.gifUrl"
-        alt=""
-        srcset=""
-        @load="imageLoaded"
-      > -->
-      <audio
-        v-for="(item,index) in imageUrl"
-        v-bind:key="index+'_audio'"
-        v-show="false"
-        :src="item.audio"
-      ></audio>
-      <p class="loading">加载中...{{val}}%</p>
+  <div
+    class="page-container"
+    style="text-align: center;"
+  >
+    <div class="progress-bar">
+      <h1><strong class="loading">Loading...</strong></h1>
+      <h2><strong class="loading">{{percent}}</strong></h2>
     </div>
-  </transition>
+  </div>
 </template>
-<script type="text/babel">
+
+<script>
 import { data } from "../assets/js/data.js";
 export default {
   data() {
     return {
-      isShow: true, // 是否显示进度条
-      imageUrl: data,
-      val: 0 // 进度
+      count: 0,
+      percent: "",
+      imageUrl: data
     };
   },
-  props: {
-    /**
-     * 每10毫秒自增幅度
-     */
-    step: {
-      type: Number,
-      default: 5
-    },
-    /**
-     * 初始值
-     */
-    initVal: {
-      type: Number,
-      default: 0
-    },
-    /**
-     * 到一定进度停止
-     */
-    stopVal: {
-      type: Number,
-      default: 80
-    },
-    /**
-     * 进度条继续到成功
-     */
-    isOk: {
-      type: Boolean,
-      default: false
-    }
-  },
-  mounted() {
-    // 初始化后加载进度，加载到百分之多少由stopVal决定
-    this.val = this.initVal;
-    let step = this.step;
-    let timer = setInterval(() => {
-      this.val = this.val + step;
-      this.$el.style.width = this.val + "%";
-      // 父组件数据加载完前进度条最多到stopVal的这个百分值
-      if (this.val >= this.stopVal) {
-        clearInterval(timer);
-        return;
-      }
-    }, 10);
+  mounted: function() {
+    this.preload();
   },
   methods: {
-    imageLoaded() {
-      this.$router.push("/mobile");
+    preload: function() {
+      let imgs = [];
+      let auidos = [];
+      for (let index = 0; index < 2; index++) {
+        imgs.push(data[index].gifUrl);
+      }
+
+      for (let img of imgs) {
+        let image = new Image();
+        image.src = img;
+        image.onload = () => {
+          this.count++;
+          // 计算图片加载的百分数，绑定到percent变量
+          let percentNum = Math.floor((this.count / 2) * 100);
+          this.percent = `${percentNum}%`;
+        };
+      }
     }
   },
+
   watch: {
-    /**
-     * 监听组件props变化决定是否继续加载，一般在父组件数据加载完后改变此标志位
-     */
-    isOk() {
-      let val = this.val;
-      let step = this.step;
-      let timer = setInterval(() => {
-        val = val + step;
-        this.$el.style.width = val + "%";
-        // 加载到百分百完成
-        if (val >= 100) {
-          // 关闭定时器
-          clearInterval(timer);
-          // 加载完成关闭进度条
-          this.isShow = false;
-          // 加载完成的回调
-          this.$emit("callback", "load success");
-          return;
-        }
-      }, 10);
+    count: function(val) {
+      if (val >= 2) {
+        // 图片加载完成后跳转页面
+        this.$router.push({ path: "mobile" });
+      }
     }
   }
 };
 </script>
 
+
+
 <style lang="less" >
+#app {
+  height: 100vh;
+}
 .progress-bar {
   position: absolute;
   top: 0;
@@ -134,27 +68,8 @@ export default {
   left: 0;
   right: 0;
   margin: auto;
-  height: 6px;
-  width: 0;
-  background-color: #999;
-}
-
-.loading {
-  width: 100px;
-  margin: 20px auto 0;
-  display: block;
-  text-align: center;
+  height: 100px;
   color: #999;
-}
-.fade {
-  &-enter-active,
-  &-leave-active {
-    transition: all 0.3s;
-  }
-
-  &-enter,
-  &-leave-active {
-    opacity: 0;
-  }
+  text-align: center;
 }
 </style>
