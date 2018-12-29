@@ -2,6 +2,7 @@
 <template>
   <div class="audioBox">
     <audio
+      id="music_mp3_0"
       :src="bgaudio"
       loop
       ref="audioBg"
@@ -9,23 +10,40 @@
       autoplay="autoplay"
     ></audio>
     <img
-      :src="[bgaudioPlay ? '/static/images/bgplay.png' : '/static/images/bgstop.png']"
+      :src="[bgaudioPlay ?mainsrc+ '/static/images/bgplay.png' : mainsrc+'/static/images/bgstop.png']"
       v-on:click="audioTab"
     >
   </div>
 </template>
 
 <script>
+import { src } from "../assets/js/data.js";
 export default {
   name: "bgaudio",
   data() {
     return {
+      mainsrc: src,
       bgaudioPlay: true,
-      bgaudio: "/static/audio/bg.mp3"
+      bgaudio: src + "/static/audio/bg.mp3"
     };
   },
 
   created() {
+    document.addEventListener("DOMContentLoaded", function() {
+      function audioAutoPlay() {
+        var audio = document.getElementById("music_mp3_0");
+        var itemAudio = document.getElementById("itemAudio");
+        document.addEventListener(
+          "WeixinJSBridgeReady",
+          function() {
+            audio.play();
+            itemAudio.play();
+          },
+          false
+        );
+      }
+      audioAutoPlay();
+    });
   },
 
   components: {},

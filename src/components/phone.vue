@@ -16,25 +16,85 @@
         <img
           v-for="(itemImg,indexImg) in item.animate"
           v-bind:key="indexImg+'itemImg'"
-          v-if="itemImg.imgtext"
+          v-if="itemImg.imgtext&&index==0||index==mides.length-1"
           class="gifImgText1"
+          v-bind:style="{animationDuration:itemImg.animateDuration}"
           :src="itemImg.imgtext"
           alt=""
           srcset=""
           v-animate="{value: itemImg.value, delay: itemImg.delay}"
         >
-        <audio
+        <!-- <div
+          class="textBox"
+          v-if="item.texts"
+        > -->
+        <!-- <p>{{mides.length}}----{{index}}----{{mides.length-1}}</p> -->
+        <p
+          class="title"
+          v-if="item.texts&&item.texts!=''"
+          v-animate="{value: item.texts[0].value, delay: item.texts[0].delay}"
+          v-bind:style="{color: item.texts[0].color,animationDuration:item.texts[0].animateDuration}"
+        >{{item.texts[0].text}}
+        </p>
+        <p
+          class="title-sub"
+          v-if="item.texts&&item.texts!=''"
+          v-animate="{value: item.texts[1].value, delay: item.texts[1].delay}"
+          v-bind:style="{color: item.texts[1].color,animationDuration:item.texts[1].animateDuration}"
+        >{{item.texts[1].text}}</p>
+        <!-- <div
+          class="textb"
+          v-if="item.texts"
+          v-animate="{value: item.texts[2].value, delay: item.texts[2].delay}"
+          v-bind:style="{color: item.texts[2].color,animationDuration:item.texts[2].animateDuration}"
+        > -->
+
+        <!-- (index==2?'rgba(67, 67, 67, 0.5)':item.texts[2].animateDuration) -->
+        <p
+          class="text"
+          v-if="item.texts&&item.texts[2].text&&item.texts!=''"
+          v-animate="{value: item.texts[2].value, delay: item.texts[2].delay}"
+          v-bind:style="{color: item.texts[2].color,border: '1px solid '+(index==2||index==8||index==9||index==11||index==13||index==15||index==16?'rgba(67, 67, 67, 0.5)':item.texts[2].color),animationDuration:item.texts[2].animateDuration}"
+        >{{item.texts[2].text}}</p>
+
+        <!-- </div> -->
+        <p
+          class="textEnd"
+          v-if="item.texts&&item.texts!=''"
+          v-animate="{value: item.texts[3].value, delay: item.texts[3].delay}"
+          v-bind:style="{color: item.texts[3].color,animationDuration:item.texts[3].animateDuration}"
+        >{{item.texts[3].text}}</p>
+        <p
+          class="bottomText"
+          v-if="item.texts&&item.texts!=''"
+          v-animate="{value: item.texts[4].value, delay: item.texts[4].delay}"
+          v-bind:style="{color: item.texts[4].color,animationDuration:item.texts[4].animateDuration}"
+        >{{item.texts[4].text}}</p>
+        <!-- </div> -->
+        <!-- <p
+          class="imgWarp"
+          v-if="index==0||index==mides.length-1"
+        > -->
+
+        <!-- </p> -->
+        <!-- <audio
           :src="item.audio"
           ref="audios"
           preload="auto"
-        ></audio>
+        ></audio> -->
       </div>
     </div>
+    <audio
+      id="itemAudio"
+      ref="audios"
+      preload="auto"
+      v-show="false"
+    ></audio>
   </div>
 </template>
 
 <script>
-import { data } from "../assets/js/data.js";
+import { data, src } from "../assets/js/data.js";
 import bgaudio from "../components/bgaudio.vue";
 export default {
   name: "demo",
@@ -62,38 +122,28 @@ export default {
 
     // 改变之前
     beforeChange(prev, next) {
-      // console.log("before", prev, next);
-      // if (prev != 0) {
-      // this.$refs.audios[prev].load();
-
-      this.$refs.audios[prev].src = this.$refs.audios[prev].src;
-      console.log(this.$refs.audios[prev].src);
-      // this.down(this.mides[next].gifUrl, next);
-      // }
+      console.log("改变之前", prev, next);
     },
     // 改变之后
     afterChange(prev, next) {
-      // console.log("after", prev, next);
-      // if (next != 0) {
-      var musicEle0 = this.$refs.audios[next];
-      musicEle0.play();
-      this.$refs.audios[next].play();
-      // }
-    },
-    down(selector, name) {
-      // 生成一个a元素
-      var a = document.createElement("a"); // 将a的download属性设置为我们想要下载的图片名称
-      a.download = name || "pic"; // 将生成的URL设置为a.href属性
-      a.href = "./boy.png"; // 触发a的单击事件
+      // ok
+      if (prev == next) {
+        if (prev == 0) {
+          itemAudio.src = this.mides[0].audio;
+          itemAudio.play();
+        }
+      } else {
+        itemAudio.src = this.mides[next].audio;
+        itemAudio.play();
+      }
     }
   },
   created() {
-    // console.log(data);
+    var itemAudio = document.getElementById("itemAudio");
     this.mides = data;
     setTimeout(() => {
       this.isShowPage = false;
     }, 2000);
-    // console.log($);
   }
 };
 </script>
@@ -108,9 +158,84 @@ export default {
   width: 100%;
   height: 100vh;
   margin: 0;
-  background-size: 100%;
   background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100% 100%;
   position: relative;
+  text-align: center;
+  font-family: "Hiragino Sans GB", "Microsoft YaHei", "PingFangSC-Regular",
+    SimHei, STHeiti;
+  .title {
+    font-size: 64px;
+    letter-spacing: 0;
+    line-height: 64px;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 60px;
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    // text-shadow: 1px 1px 0px rgba(204, 202, 202, 0.558);
+  }
+  .title-sub {
+    opacity: 0.8;
+    font-size: 28px;
+    letter-spacing: 0;
+    line-height: 28px;
+    margin: 0 auto;
+    margin-top: 15px;
+    display: block;
+    // text-shadow: 1px 1px 0px rgba(204, 202, 202, 0.558);
+    // position: absolute;
+    // top: 133px;
+    // left: 0;
+    // right: 0;
+    // margin: auto;
+  }
+  .text {
+    font-size: 16px;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 15px;
+    display: inline-block;
+    padding: 6px 13px;
+    margin: 0 auto;
+    margin-top: 35px;
+    // text-shadow: 1px 1px 0px rgba(204, 202, 202, 0.558);
+  }
+
+  .textEnd {
+    font-size: 14px;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 16px;
+    margin: 0 auto;
+    margin-top: 6px;
+    // position: absolute;
+    // top: 245px;
+    // left: 0;
+    // right: 0;
+    // margin: auto;
+    // text-shadow: 1px 1px 0px rgba(204, 202, 202, 0.558);
+  }
+  .bottomText {
+    opacity: 0.8;
+    font-size: 14px;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 16px;
+    position: absolute;
+    bottom: 32px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    // text-shadow: 1px 1px 0px rgba(204, 202, 202, 0.558);
+  }
+  .imgWarp {
+    width: 100%;
+    height: 100%;
+  }
   .gifImgText1 {
     position: absolute;
     // top: 32px;
@@ -119,6 +244,7 @@ export default {
     margin: auto;
     width: 100%;
     height: 100%;
+    max-height: 736px;
   }
   .gifImgText2 {
     position: absolute;
@@ -128,7 +254,7 @@ export default {
     margin: auto;
     width: 100%;
     height: 100%;
-    max-height: 100vh;
+    max-height: 736px;
   }
   .gifImgText3 {
     position: absolute;
@@ -138,7 +264,7 @@ export default {
     margin: auto;
     width: 100%;
     height: 100%;
-    max-height: 100vh;
+    max-height: 736px;
   }
   .gifImgText4 {
     position: absolute;
@@ -147,16 +273,7 @@ export default {
     margin: auto;
     width: 100%;
     height: 100%;
-    max-height: 100vh;
+    max-height: 736px;
   }
 }
-// .page-1 {
-//   background: #1bbc9b;
-// }
-// .page-2 {
-//   background: #000000;
-// }
-// .page-3 {
-//   background: #aabbcc;
-// }
 </style>
