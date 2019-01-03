@@ -513,14 +513,14 @@ var data = [
         color: "rgba(255, 255, 255, 0.8)"
       },
       {
-        text: "龙岗区  全年接待游客816万人次",
+        text: "龙岗区  2018年接待游客877万人次",
         value: "fadeInUp",
         delay: 800,
         animateDuration: "1.4s",
         color: "rgba(255, 255, 255, 0.8)"
       },
       {
-        text: "品位客家文化",
+        text: "品味客家文化",
         value: "fadeInUp",
         delay: 1200,
         animateDuration: "1.8s",
@@ -848,7 +848,7 @@ var data = [
         color: "rgba(255, 255, 255, 0.8)"
       },
       {
-        text: "深圳东站  日均进出客流量约29万人次",
+        text: "深圳东站  日均进出客流量约26万人次",
         value: "fadeInUp",
         delay: 800,
         animateDuration: "1.4s",
@@ -915,7 +915,7 @@ var data = [
         color: "rgba(67, 67, 67, 0.945)"
       },
       {
-        text: "龙岗区  新速度 15个公立医院项目集中开工",
+        text: "龙岗区  15个公立医院项目集中开工",
         value: "fadeInUp",
         delay: 800,
         animateDuration: "1.4s",
@@ -1049,7 +1049,7 @@ var data = [
         color: "rgba(67, 67, 67, 0.945)"
       },
       {
-        text: "龙岗区  城市更新土地供应量超过全市1/3",
+        text: "龙岗区  城市更新土地供应量超过全市完成量1/3",
         value: "fadeInUp",
         delay: 800,
         animateDuration: "1.4s",
